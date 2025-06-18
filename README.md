@@ -1,6 +1,6 @@
 # Ứng dụng Quản Lý Nhà Hàng
 
-Nhóm : OOP_N05_T3_2025_GROUP_Truong_Tai_Quynh
+Nhóm : OOP_N05_T3_2025_Group_Thao.Linh.Cương
 
 
 Ứng Dụng Quản Lý Nhà Hàng
