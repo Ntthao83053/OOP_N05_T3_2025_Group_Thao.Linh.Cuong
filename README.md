@@ -1,13 +1,15 @@
 # Ứng dụng Quản Lý Nhà Hàng
 
 Nhóm : OOP_N05_T3_2025_Group_Thao.Linh.Cương
-
-
-Ứng Dụng Quản Lý Nhà Hàng
-
-# Thành viên :
-   ```
-
+# Ứng Dụng Quản Lý Nhà Hàng
+# Đối tượng
+1. Nhân viên
+2. Khách hàng
+3. Thực đơn
+4. Hóa đơn
+5. Nguồn nguyên liệu
+6. Tài khoản người dùng
+# Thành viên :  
 1. Nguyễn Thị Thảo, MSV: 24100357(github: Ntthao83053)
 
 2. Vũ Thị Kiều Linh, MSV : 24100542 (ningning1115)
