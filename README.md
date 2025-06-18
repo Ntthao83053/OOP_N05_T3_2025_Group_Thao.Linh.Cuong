@@ -1,6 +1,6 @@
 # Ứng dụng Quản Lý Nhà Hàng
 
-Nhóm : OOP_N05_T3_2025_Group_Thao.Linh.Cương
+Nhóm : OOP_N05_T3_2025_Group_Thao.Linh.Cuong
 # Ứng Dụng Quản Lý Nhà Hàng
 # Đối tượng
 1. Nhân viên
