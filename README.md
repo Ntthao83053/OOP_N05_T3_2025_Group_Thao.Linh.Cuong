@@ -10,7 +10,7 @@ Nhóm : OOP_N05_T3_2025_Group_Thao.Linh.Cương
 5. Nguồn nguyên liệu
 6. Tài khoản người dùng
 # Thành viên :  
-1. Nguyễn Thị Thảo, MSV: 24100357(github: Ntthao83053)
+1. Nguyễn Thị Thảo, MSV: 24100357(Ntthao83053)
 
 2. Vũ Thị Kiều Linh, MSV : 24100542 (ningning1115)
 
