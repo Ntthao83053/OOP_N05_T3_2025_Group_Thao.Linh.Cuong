@@ -4,14 +4,34 @@ Nhóm : OOP_N05_T3_2025_Group_Thao.Linh.Cuong
 # Ứng Dụng Quản Lý Nhà Hàng
 # Đối tượng
 1. Nhân viên
-hovaten,tuoi,sodienthoai,diachi,cmnd
+- Quản lý : họ tên, tuổi, số điện thoại, địa chỉ , cmnd
+- Phục vụ
+-Thu ngân
+
 2. Khách hàng
-ten,tuoi,sdt
+-Tên
+-Số điện thoại
+
 3. Thực đơn
+-Món chính
+-Món tráng miệng
+-Đồ uống
 4. Hóa đơn
-ma,tenKH,ngay,tong
+-Mặt hàng
+-Số lượng
+-Mã giảm giá, ưu đãi
+-Tên khách hàng
+-Thời gian
+-Tổng tiền
 5. Nguồn nguyên liệu
+-Thời gian nhập, xuất
+-Hạn sử dụng
+-Số lượng
+-Mặt hàng nhập
 6. Tài khoản người dùng
+-Tên
+-Mã đăng nhập
+-Phân loại khách hàng
 # Thành viên :  
 1. Nguyễn Thị Thảo, MSV: 24100357 (Ntthao83053)
 2. Vũ Thị Kiều Linh, MSV : 24100542 (ningning1115)
