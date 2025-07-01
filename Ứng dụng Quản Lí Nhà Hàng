@@ -4,9 +4,12 @@ Nhóm : OOP_N05_T3_2025_Group_Thao.Linh.Cuong
 # Ứng Dụng Quản Lý Nhà Hàng
 # Đối tượng
 1. Nhân viên
+hovaten,tuoi,sodienthoai,diachi,cmnd
 2. Khách hàng
+ten,tuoi,sdt
 3. Thực đơn
 4. Hóa đơn
+ma,tenKH,ngay,tong
 5. Nguồn nguyên liệu
 6. Tài khoản người dùng
 # Thành viên :  
