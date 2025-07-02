@@ -1,5 +1,5 @@
-public class Main {
-    public static void main(String[] args)  {
+public class App {
+    public static void test(String[] args)  {
         nhanvien nv = new nhanvien("Nguyen van A", "18", "09xxxxxxxx","Hanoi","nu","7561266345");
         nv.hienthi1();
 
