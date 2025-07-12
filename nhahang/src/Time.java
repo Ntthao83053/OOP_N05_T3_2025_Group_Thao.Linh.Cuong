@@ -1,5 +1,5 @@
 public class Time {
-    int hour;
+      int hour;
     int minute;
     int second;
 
@@ -56,4 +56,5 @@ public class Time {
     public String toString() {
         return String.format("%02d:%02d:%02d", hour, minute, second);
     }
+    
 }
