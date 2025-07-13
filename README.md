@@ -23,7 +23,7 @@
 # Sơ đồ chức năng
 <img src = "Untitled.png">
 # Sơ đồ thuật toán
-<img src = "">
+<img src = "img/Untitled (1).png">
    ```
 
 # Repo của nhóm : 
