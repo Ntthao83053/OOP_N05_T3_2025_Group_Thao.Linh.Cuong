@@ -22,6 +22,8 @@
 4. Nguyễn Lệ Thu (nglthu1979)
 # Sơ đồ chức năng
 <img src = "Untitled.png">
+# Sơ đồ thuật toán
+<img src = "">
    ```
 
 # Repo của nhóm : 
