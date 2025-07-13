@@ -21,10 +21,12 @@
 3. Nguyễn Công Cường. MSV : 24100285 (NCC24100285)
 4. Nguyễn Lệ Thu (nglthu1979)
 # Sơ đồ chức năng
-<img src = "Untitled.png">
+<img src = "img/Untitled.png">
+
 # Sơ đồ thuật toán
+1. Sơ đồ đặt bàn
 <img src = "img/Untitled (1).png">
-   ```
+   
 
 # Repo của nhóm : 
 
