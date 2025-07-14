@@ -26,8 +26,8 @@
 # Sơ đồ thuật toán
 1. Sơ đồ đặt bàn
 <img src = "img/Untitled (1).png">
-   
-
+2. Sơ đồ khách hàng
+<img src = "">
 # Repo của nhóm : 
 
 https://github.com/Ntthao83053/OOP_N05_T3_2025_Group_Thao.Linh.Cuong
