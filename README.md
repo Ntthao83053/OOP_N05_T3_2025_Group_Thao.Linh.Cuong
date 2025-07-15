@@ -28,6 +28,8 @@
 <img src = "img/Untitled (1).png">
 2. Sơ đồ khách hàng
 <img src = "img/KhachHang.png">
+3. Sơ đồ đơn hàng
+<img src = "img/Donhang.png">
 # Repo của nhóm : 
 
 https://github.com/Ntthao83053/OOP_N05_T3_2025_Group_Thao.Linh.Cuong
