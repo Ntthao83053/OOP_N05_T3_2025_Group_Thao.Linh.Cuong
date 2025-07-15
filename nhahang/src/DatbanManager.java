@@ -5,14 +5,14 @@ public class DatbanManager {
     private ArrayList<Datban> danhSachDatban = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
 
-    // Create
+   
     public void themDatban() {
         System.out.print("Nhập mã khách hàng: ");
         String maKH = scanner.nextLine();
         System.out.print("Nhập mã đặt bàn: ");
         String maDB = scanner.nextLine();
 
-        // Kiểm tra trùng mã
+        
         for (Datban db : danhSachDatban) {
             if (db.getMaDatban().equals(maDB)) {
                 System.out.println("Mã đặt bàn đã tồn tại!");
@@ -31,7 +31,7 @@ public class DatbanManager {
         System.out.println("✔ Thêm thành công!");
     }
 
-    // Read
+    
     public void hienThiDatban() {
         if (danhSachDatban.isEmpty()) {
             System.out.println("Không có đặt bàn nào.");
@@ -42,7 +42,7 @@ public class DatbanManager {
         }
     }
 
-    // Update
+    
     public void suaDatban() {
         System.out.print("Nhập mã đặt bàn cần sửa: ");
         String maDB = scanner.nextLine();
@@ -58,7 +58,7 @@ public class DatbanManager {
         System.out.println("Không tìm thấy mã đặt bàn.");
     }
 
-    // Delete
+    
     public void xoaDatban() {
         System.out.print("Nhập mã đặt bàn cần xoá: ");
         String maDB = scanner.nextLine();
