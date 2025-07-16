@@ -30,7 +30,7 @@ Mô tả:
 2. Sơ đồ khách hàng
 <img src = "img/KhachHang.png">
 3. Sơ đồ đơn hàng
-<img src = "img/Donhang.png">
+<img src = "img/Untitled-Page-1 (9).png">
 
 Câu 1 
 Tiêu đề bài tập lớn cuối kỳ của nhóm:
