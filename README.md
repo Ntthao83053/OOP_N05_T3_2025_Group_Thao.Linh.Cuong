@@ -30,7 +30,7 @@ Mô tả:
 2. Sơ đồ khách hàng
 <img src = "img/KhachHang.png">
 3. Sơ đồ đơn hàng
-<img src = "img/Donhang.png">
+<img src = "img/Untitled-Page-1 (9).png">
 
 Câu 1 
 Tiêu đề bài tập lớn cuối kỳ của nhóm:
@@ -60,20 +60,25 @@ Cấu trúc thư mục ví dụ:
 Câu 4 
 Các class đã viết /src:
 
-KhachHang.java
 Datban.java
+DatBanManager.java
 DonHang.java
+DonHangService.java
+QuanLyKhachHang.java
 
 Câu 5 
 Các class kiểm định đã viết trong /src/tests:
 
-testKhachHang.java
+testQuanLyKhachHang.java
 TestDatban.java
-TestDonhang
+DonHangTest.java
 Câu 6 
 Link đến README.md đã cập nhật đầy đủ thông tin:
 
-
+# Nhiệm vụ thành viên :  
+1. Nguyễn Thị Thảo, MSV: 24100357 (Ntthao83053) DatBan
+2. Vũ Thị Kiều Linh, MSV : 24100542 (ningning1115) DonHang
+3. Nguyễn Công Cường. MSV : 24100285 (NCC24100285) QuanLyKhachHang
 
 
 
