@@ -7,7 +7,7 @@ public class DatbanManager {
     // Create
     public void addDatban(Datban db) {
         datbanList.add(db);
-        System.out.println("➕ Đã thêm đặt bàn: " + db.getmaDatban());
+        System.out.println(" Đã thêm đặt bàn: " + db.getmaDatban());
     }
 
     // Read
@@ -49,9 +49,9 @@ public class DatbanManager {
         }
         if (toRemove != null) {
             datbanList.remove(toRemove);
-            System.out.println("🗑 Đã xóa đặt bàn: " + maDatban);
+            System.out.println(" Đã xóa đặt bàn: " + maDatban);
         } else {
-            System.out.println("⚠ Không tìm thấy đặt bàn để xóa.");
+            System.out.println(" Không tìm thấy đặt bàn để xóa.");
         }
     }
 }
