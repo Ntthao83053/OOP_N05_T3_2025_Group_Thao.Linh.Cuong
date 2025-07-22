@@ -1,56 +1,49 @@
-import java.time.Instant;
 import java.util.Scanner;
+import java.time.Instant;
 
 public class TestQuanLyDonHang {
-    public void runTest() {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         QuanLyDonHang qldh = new QuanLyDonHang();
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("--- Bắt đầu chương trình kiểm thử Hệ thống Quản lý Đơn hàng ---");
-            System.out.print("Nhập số lượng đơn hàng cần thêm: ");
-            int soLuong = Integer.parseInt(scanner.nextLine());
 
-            for (int i = 1; i <= soLuong; i++) {
-                System.out.println("\nNhập thông tin cho đơn hàng thứ " + i + ":");
+        System.out.println("CHƯƠNG TRÌNH QUẢN LÝ ĐƠN HÀNG");
 
-                System.out.print("Mã đơn hàng: ");
-                String maDH = scanner.nextLine();
+        System.out.print("Nhập số lượng đơn hàng muốn thêm: ");
+        int soLuong = Integer.parseInt(scanner.nextLine());
 
-                System.out.print("Mã khách hàng: ");
-                String maKH = scanner.nextLine();
+        for (int i = 0; i < soLuong; i++) {
+            System.out.println("Nhập thông tin cho đơn hàng thứ " + (i + 1));
+            System.out.print("Mã đơn hàng: ");
+            String maDon = scanner.nextLine();
 
-                System.out.print("Mã bàn (có thể để trống): ");
-                String maBan = scanner.nextLine();
-                if (maBan.isBlank()) maBan = null;
+            System.out.print("Mã khách hàng: ");
+            String maKH = scanner.nextLine();
 
-                int tgDat = (int) Instant.now().getEpochSecond(); // thời gian hiện tại
+            System.out.print("Mã bàn (có thể để trống): ");
+            String maBan = scanner.nextLine();
+            if (maBan.isEmpty()) maBan = null;
 
-                System.out.print("Trạng thái đơn hàng: ");
-                String trangThai = scanner.nextLine();
+            int thoiGian = (int) Instant.now().getEpochSecond();
 
-                DonHang donHang = new DonHang(maDH, maKH, maBan, tgDat, trangThai);
-                qldh.themDonHang(donHang);
-            }
+            System.out.print("Trạng thái: ");
+            String trangThai = scanner.nextLine();
 
-            System.out.println("\n== Danh sách đơn hàng đã nhập ==");
-            qldh.hienThiTatCaDonHang();
-
-      
-            System.out.print("\nNhập mã đơn hàng cần cập nhật trạng thái: ");
-            String maDHCanCapNhat = scanner.nextLine();
-            System.out.print("Nhập trạng thái mới: ");
-            String trangThaiMoi = scanner.nextLine();
-            qldh.capNhatTrangThaiDonHang(maDHCanCapNhat, trangThaiMoi);
-
-            System.out.print("\nNhập mã đơn hàng không tồn tại để kiểm tra lỗi: ");
-            String maDHKhongTonTai = scanner.nextLine();
-            System.out.print("Nhập trạng thái mới (ví dụ: Đã hủy): ");
-            String trangThaiKhongTonTai = scanner.nextLine();
-            qldh.capNhatTrangThaiDonHang(maDHKhongTonTai, trangThaiKhongTonTai);
-
-            System.out.println("\n== Danh sách đơn hàng sau cập nhật ==");
-            qldh.hienThiTatCaDonHang();
-
-            System.out.println("\n--- Kết thúc chương trình kiểm thử ---");
+            DonHang donHang = new DonHang(maDon, maKH, maBan, thoiGian, trangThai);
+            qldh.themDonHang(donHang);
         }
+
+        System.out.println();
+        qldh.hienThiTatCaDonHang();
+
+        System.out.print("\nNhập mã đơn hàng cần cập nhật trạng thái: ");
+        String maUpdate = scanner.nextLine();
+        System.out.print("Trạng thái mới: ");
+        String ttMoi = scanner.nextLine();
+        qldh.capNhatTrangThaiDonHang(maUpdate, ttMoi);
+
+        System.out.println();
+        qldh.hienThiTatCaDonHang();
+
+        scanner.close();
     }
 }
