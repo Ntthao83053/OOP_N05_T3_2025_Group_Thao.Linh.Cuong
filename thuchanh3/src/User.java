@@ -1,4 +1,5 @@
 package thuchanh3.src;
+
 public class User {
     private String name;
     private String email;
@@ -23,5 +24,4 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    
 }
