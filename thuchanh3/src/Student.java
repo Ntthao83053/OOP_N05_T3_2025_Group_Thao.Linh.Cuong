@@ -1,3 +1,5 @@
+package thuchanh3.src;
+
 public class Student implements Comparable {
 public Student(String name, float gpa) {
 this.name = name;

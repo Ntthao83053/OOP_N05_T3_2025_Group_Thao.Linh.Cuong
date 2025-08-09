@@ -1,5 +1,5 @@
-class CellPhone {
-    CellPhone() 
+class MyCellPhone {
+    MyCellPhone() {}
     public void ring(Tune t) { t.play(); }
 }
 
