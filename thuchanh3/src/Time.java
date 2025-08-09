@@ -1,4 +1,4 @@
-
+package thuchanh3.src;
 public class Time {
     int hour;
     int minute;
@@ -19,8 +19,7 @@ public class Time {
     Time(int h, int m, int s) {
         setTime(h, m, s);
     }
-
-    Time setTime(int h, int m, int s) {
+     Time setTime(int h, int m, int s) {
         setHour(h);
         setMinute(m);
         setSecond(s);
@@ -54,4 +53,9 @@ public class Time {
         return second;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%02d:%02d:%02d", hour, minute, second);
+    }
+    
 }
