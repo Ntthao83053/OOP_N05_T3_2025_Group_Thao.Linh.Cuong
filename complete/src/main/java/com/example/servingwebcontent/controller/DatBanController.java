@@ -1,24 +1,62 @@
+package com.example.servingwebcontent.controller;
+
+import com.example.servingwebcontent.database.DatBanDatabase;
+import com.example.servingwebcontent.model.DatBan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+
+@Controller
 public class DatBanController {
-    class BoDieuKhienDatBan:
-    def __init__(self):
-        self.co_so_du_lieu = CoSoDuLieuDatBan()
 
-    def xu_ly_tao_dat_ban(self, ten_khach_hang, so_ban, thoi_gian_dat):
-        dat_ban = self.co_so_du_lieu.tao_dat_ban(ten_khach_hang, so_ban, thoi_gian_dat)
-        return f"Da tao dat ban: {dat_ban.hien_thi_thong_tin()}"
+    @Autowired
+    private DatBanDatabase datBanDatabase;
 
-    def xu_ly_doc_tat_ca(self):
-        danh_sach = self.co_so_du_lieu.doc_tat_ca_dat_ban()
-        if not danh_sach:
-            return "Khong co dat ban nao."
-        return danh_sach
+    @PostMapping("/datban")
+    public String createDatBan(@RequestParam int tableNumber, @RequestParam LocalDateTime reservationTime) {
+        try {
+            datBanDatabase.createDatBan(tableNumber, reservationTime);
+            return "redirect:/datban";
+        } catch (IllegalStateException e) {
+            return "error"; // Trang lỗi, cần tạo template error.html
+        }
+    }
 
-    def xu_ly_doc_theo_ma(self, ma_dat_ban):
-        return self.co_so_du_lieu.doc_dat_ban_theo_ma(ma_dat_ban)
+    @GetMapping("/datban/{id}")
+    public String getDatBan(@PathVariable Long id, Model model) {
+        DatBan datBan = datBanDatabase.getDatBan(id);
+        if (datBan == null) {
+            return "not-found"; // Trang lỗi, cần tạo template not-found.html
+        }
+        model.addAttribute("datBan", datBan);
+        return "datban-detail";
+    }
 
-    def xu_ly_sua_dat_ban(self, ma_dat_ban, **kwargs):
-        return self.co_so_du_lieu.sua_dat_ban(ma_dat_ban, **kwargs)
+    @PostMapping("/datban/{id}")
+    public String updateDatBan(@PathVariable Long id, @RequestParam int tableNumber, @RequestParam LocalDateTime reservationTime) {
+        try {
+            DatBan datBan = datBanDatabase.updateDatBan(id, tableNumber, reservationTime);
+            if (datBan == null) {
+                return "not-found";
+            }
+            return "redirect:/datban";
+        } catch (IllegalStateException e) {
+            return "error";
+        }
+    }
 
-    def xu_ly_xoa_dat_ban(self, ma_dat_ban):
-        return self.co_so_du_lieu.xoa_dat_ban(ma_dat_ban)
+    @DeleteMapping("/datban/{id}")
+    public String deleteDatBan(@PathVariable Long id) {
+        datBanDatabase.deleteDatBan(id);
+        return "redirect:/datban";
+    }
+
+    @GetMapping("/datban")
+    public String listDatBan(Model model) {
+        model.addAttribute("datBans", datBanDatabase.getAllDatBans());
+        return "datban-list";
+    }
 }
