@@ -1,14 +1,23 @@
-// Feedback.java (Model)
 package com.example.servingwebcontent.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.util.Date;
 
+@Entity  // Thêm annotation này để JPA nhận diện là entity
 public class Feedback {
+    @Id  // Chỉ định trường khóa chính
+    @GeneratedValue(strategy = GenerationType.AUTO)  // Tự động tạo ID
     private Long id;
     private String userName;
     private String content;
     private int rating;
     private Date date;
+
+    public Feedback() {}  // Constructor mặc định cho JPA
 
     public Feedback(Long id, String userName, String content, int rating, Date date) {
         this.id = id;
