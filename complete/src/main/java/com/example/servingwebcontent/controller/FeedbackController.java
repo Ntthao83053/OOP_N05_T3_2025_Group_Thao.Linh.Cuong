@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class FeedbackController {
-    private FeedbackDatabase database = new FeedbackDatabase();
+    public FeedbackDatabase database = new FeedbackDatabase();
     private Scanner scanner = new Scanner(System.in);
 
     public void run() {

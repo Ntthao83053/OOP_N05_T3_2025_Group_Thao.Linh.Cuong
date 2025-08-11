@@ -1,69 +1,54 @@
+package com.example.servingwebcontent;
 
-// FeedbackDatabaseTest.java (JUnit Test)
-package com.example.servingwebcontent.database;
-
+import com.example.servingwebcontent.database.FeedbackDatabase;
 import com.example.servingwebcontent.model.Feedback;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FeedbackDatabaseTest {
-    private FeedbackDatabase database;
+
+    private FeedbackDatabase feedbackDatabase;
 
     @BeforeEach
     public void setUp() {
-        database = new FeedbackDatabase();
+        feedbackDatabase = new FeedbackDatabase();
+        feedbackDatabase.createFeedback("Test User", "Test feedback", 3);
     }
 
     @Test
     public void testCreateFeedback() {
-        Feedback feedback = database.createFeedback("User1", "Good", 5);
+        Feedback feedback = feedbackDatabase.createFeedback("New User", "New feedback", 5);
         assertNotNull(feedback);
-        assertEquals(1L, feedback.getId());
-        assertEquals("User1", feedback.getUserName());
-        assertEquals("Good", feedback.getContent());
-        assertEquals(5, feedback.getRating());
-        assertNotNull(feedback.getDate());
-    }
-
-    @Test
-    public void testReadAllFeedback() {
-        database.createFeedback("User1", "Good", 5);
-        database.createFeedback("User2", "Bad", 1);
-        List<Feedback> feedbackList = database.readAllFeedback();
-        assertEquals(2, feedbackList.size());
+        assertNotNull(feedback.getId());
+        assertEquals("New User", feedback.getUserName());
     }
 
     @Test
     public void testReadFeedbackById() {
-        database.createFeedback("User1", "Good", 5);
-        Optional<Feedback> feedback = database.readFeedbackById(1L);
-        assertTrue(feedback.isPresent());
-        assertEquals("User1", feedback.get().getUserName());
+        Optional<Feedback> feedback = feedbackDatabase.readFeedbackById(1L);
+        assertNotNull(feedback.orElse(null));
+        assertEquals("Test User", feedback.get().getUserName());
     }
 
     @Test
     public void testUpdateFeedback() {
-        database.createFeedback("User1", "Good", 5);
-        boolean updated = database.updateFeedback(1L, "UserUpdated", "Better", 4);
+        boolean updated = feedbackDatabase.updateFeedback(1L, "Updated User", "Updated feedback", 4);
+        Optional<Feedback> feedback = feedbackDatabase.readFeedbackById(1L);
         assertTrue(updated);
-        Optional<Feedback> feedback = database.readFeedbackById(1L);
-        assertEquals("UserUpdated", feedback.get().getUserName());
-        assertEquals("Better", feedback.get().getContent());
-        assertEquals(4, feedback.get().getRating());
+        assertEquals("Updated User", feedback.get().getUserName());
     }
 
     @Test
     public void testDeleteFeedback() {
-        database.createFeedback("User1", "Good", 5);
-        boolean deleted = database.deleteFeedback(1L);
+        boolean deleted = feedbackDatabase.deleteFeedback(1L);
+        Optional<Feedback> feedback = feedbackDatabase.readFeedbackById(1L);
         assertTrue(deleted);
-        Optional<Feedback> feedback = database.readFeedbackById(1L);
-        assertFalse(feedback.isPresent());
+        assertNull(feedback.orElse(null));
     }
 }

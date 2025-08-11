@@ -46,7 +46,8 @@ public class DonHangController {
 
     @GetMapping("/donhang")
     public String listDonHang(Model model) {
-        model.addAttribute("donHangs", donHangDatabase.getAllDonHangs());
+        // Example: fetch all records, or use pagination (offset=0, limit=100)
+        model.addAttribute("donHangs", donHangDatabase.getAllDonHangs(0, 100));
         return "donhang-list";
     }
 }
