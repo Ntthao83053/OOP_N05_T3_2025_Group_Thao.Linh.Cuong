@@ -16,6 +16,7 @@ import com.example.servingwebcontent.model.DonHang;
 import com.example.servingwebcontent.model.Employee;
 import com.example.servingwebcontent.model.KhachHang;
 import com.example.servingwebcontent.model.Menu;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -38,7 +39,7 @@ public class NhaHangController {
     
     @Autowired
     private MenuDatabase menuDB;
-    
+
     @GetMapping("/")
     public String home(Model model) {
         try {
@@ -49,27 +50,42 @@ public class NhaHangController {
             List<Employee> employees = employeeDB.getAllEmployees();
             List<KhachHang> khachHangs = khachHangDB.getAllKhachHangs();
             List<Menu> menus = menuDB.getAllMenus();
-            
+
+            // Thêm thống kê tổng quát vào model
             model.addAttribute("totalBills", bills.size());
             model.addAttribute("totalDatBans", datBans.size());
             model.addAttribute("totalDonHangs", donHangs.size());
             model.addAttribute("totalEmployees", employees.size());
             model.addAttribute("totalKhachHangs", khachHangs.size());
             model.addAttribute("totalMenus", menus.size());
-            
+
+            // Thêm dữ liệu cho giao diện 3 phần
+            List<DonHang> recentOrders = donHangDB.getRecentDonHangs(5); // Lấy 5 đơn hàng gần đây
+            model.addAttribute("recentOrders", recentOrders != null ? recentOrders : new ArrayList<>());
+
+            List<Menu> menuItems = menuDB.getAllMenus(); // Lấy danh sách menu
+            model.addAttribute("menuItems", menuItems != null ? menuItems : new ArrayList<>());
+
+            List<DonHang> orderDetails = donHangDB.getAllDonHangs(); // Lấy tất cả chi tiết đơn hàng
+            model.addAttribute("orderDetails", orderDetails != null ? orderDetails : new ArrayList<>());
+
         } catch (Exception e) {
-            // Nếu có lỗi database, sử dụng dữ liệu mẫu
+            // Xử lý ngoại lệ và đặt giá trị mặc định khi có lỗi
             model.addAttribute("totalBills", 0);
             model.addAttribute("totalDatBans", 0);
             model.addAttribute("totalDonHangs", 0);
             model.addAttribute("totalEmployees", 0);
             model.addAttribute("totalKhachHangs", 0);
             model.addAttribute("totalMenus", 0);
+            model.addAttribute("recentOrders", new ArrayList<>());
+            model.addAttribute("menuItems", new ArrayList<>());
+            model.addAttribute("orderDetails", new ArrayList<>());
             model.addAttribute("error", "Lỗi kết nối database: " + e.getMessage());
         }
-        
+
         return "index";
     }
+
     
     @GetMapping("/db-status")
     public String dbStatus(Model model) {
@@ -91,7 +107,6 @@ public class NhaHangController {
             model.addAttribute("totalKhachHangs", khachHangs.size());
             model.addAttribute("totalMenus", menus.size());
             model.addAttribute("employees", employees);  // Ví dụ lấy danh sách chi tiết cho một entity
-            
         } catch (Exception e) {
             model.addAttribute("isConnected", false);
             model.addAttribute("connectionInfo", "MySQL Database - Connection Failed");
@@ -104,7 +119,6 @@ public class NhaHangController {
             model.addAttribute("totalMenus", 0);
             model.addAttribute("employees", null);
         }
-        
         return "db-status";
     }
 }
