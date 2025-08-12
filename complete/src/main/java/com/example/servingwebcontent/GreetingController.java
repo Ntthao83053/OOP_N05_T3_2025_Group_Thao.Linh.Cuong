@@ -1,44 +1,42 @@
 package com.example.servingwebcontent;
 
-import com.example.servingwebcontent.model.Customer;
+import com.example.servingwebcontent.database.KhachHangRepository;
+import com.example.servingwebcontent.database.DonHangRepository;
+import com.example.servingwebcontent.model.KhachHang;
 import com.example.servingwebcontent.model.DonHang;
-import com.example.servingwebcontent.model.OrderItem;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class GreetingController {
 
+    @Autowired
+    private DonHangRepository donHangRepository;
+
+    @Autowired
+    private KhachHangRepository khachHangRepository;
+
     @GetMapping("/index")
     public String index(Model model) {
-        // Tạo đối tượng DonHang
+        // Tạo đối tượng DonHang (sử dụng các trường có sẵn: item và price)
         DonHang order = new DonHang();
-        order.setTableNo("5");
-        order.setTime("12:00");
-        order.setGuests(4);
-
-        // Tạo danh sách món ăn
-        List<OrderItem> items = new ArrayList<>();
-        items.add(new OrderItem(2, "Bít tết"));
-        items.add(new OrderItem(1, "Salad rau trộn"));
-        items.add(new OrderItem(1, "Khôai tây chiên"));
-        items.add(new OrderItem(1, "Nước suối"));
+        order.setItem("Bít tết, Salad rau trộn, Khoai tây chiên, Nước suối");
+        order.setPrice(200000); // Tổng giá giả định
 
         // Tạo thông tin khách hàng
-        Customer customer = new Customer("Nguyễn Văn An", "0987654321", "Sinh nhật");
-
-        // Gán dữ liệu vào order
-        order.setItems(items);
-        order.setCustomer(customer);
+        KhachHang customer = new KhachHang();
+        customer.setName("Nguyễn Văn An");
+        customer.setEmail("nguyenvanan@example.com"); // Sử dụng trường email thay vì phone/note
 
         // Truyền dữ liệu vào model để Thymeleaf sử dụng
         model.addAttribute("order", order);
+        model.addAttribute("customer", customer);
         return "index"; // Trả về file index.html
     }
 
