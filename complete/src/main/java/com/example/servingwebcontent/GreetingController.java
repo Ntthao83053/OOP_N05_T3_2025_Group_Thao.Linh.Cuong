@@ -15,10 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GreetingController {
-
     @Autowired
     private DonHangRepository donHangRepository;
-
+    
     @Autowired
     private KhachHangRepository khachHangRepository;
 
