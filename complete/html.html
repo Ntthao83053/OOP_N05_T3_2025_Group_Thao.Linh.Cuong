@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Nhà Hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .main-header {
+            background: #4b7c4b;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 0;
+        }
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 56px;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 17px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        .main-nav a.active,
+        .main-nav a:hover {
+            background: #356235;
+        }
+        .search-bar {
+            margin-left: 32px;
+        }
+        .search-bar input {
+            padding: 7px 14px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            background: #fff;
+            color: #333;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+            transition: box-shadow 0.2s;
+        }
+        .search-bar input:focus {
+            box-shadow: 0 2px 8px rgba(45,143,91,0.15);
+        }
+        .main-content {
+            max-width: 1100px;
+            margin: 32px auto 0 auto;
+            padding: 0 16px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 28px;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 20px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+            padding: 20px 18px 18px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-booking-info {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+        .card-food-image {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+        .card-food-image img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 12px;
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+        .card-customer-info {
+            grid-column: 3 / 4;
+            grid-row: 1 / 3;
+        }
+        .card-order-details {
+            grid-column: 1 / 3;
+            grid-row: 2 / 3;
+        }
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 14px;
+            font-size: 1.18rem;
+            font-weight: 600;
+        }
+        .card p {
+            margin: 6px 0;
+            font-size: 1rem;
+        }
+        .card-order-details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 14px;
+        }
+        .card-order-details th, .card-order-details td {
+            border: 1px solid #e0e0e0;
+            padding: 7px 10px;
+            text-align: left;
+            font-size: 1rem;
+        }
+        .card-order-details th {
+            background: #f2f2f2;
+            font-weight: 600;
+        }
+        .card-actions {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .card-customer-info .card-actions {
+            justify-content: flex-start;
+            gap: 10px;
+        }
+        .icon-btn {
+            border: none;
+            background: #1976d2;
+            color: #fff;
+            border-radius: 6px;
+            padding: 7px 12px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.18s;
+        }
+        .icon-btn.btn-danger {
+            background: #e53935;
+        }
+        .icon-btn.btn-info {
+            background: #1976d2;
+        }
+        .icon-btn.btn-edit {
+            background: #43a047;
+        }
+        .icon-btn:hover {
+            filter: brightness(0.92);
+        }
+        .left-actions, .right-actions {
+            display: flex;
+            gap: 10px;
+        }
+        @media (max-width: 950px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto auto;
+            }
+            .card-customer-info {
+                grid-column: 1 / 3;
+                grid-row: 3 / 4;
+            }
+        }
+        @media (max-width: 700px) {
+            .main-header .header-flex {
+                flex-direction: column;
+                align-items: stretch;
+                height: auto;
+                padding: 12px;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .search-bar {
+                margin: 12px 0 0 0;
+            }
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, auto);
+            }
+            .card-booking-info,
+            .card-food-image,
+            .card-order-details,
+            .card-customer-info {
+                grid-column: 1 / 2 !important;
+                grid-row: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-flex">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Trang chủ</a></li>
+                    <li><a href="#">Quản lý bàn</a></li>
+                    <li><a href="#">Quản lý món</a></li>
+                    <li><a href="#">Đơn hàng</a></li>
+                    <li><a href="#">Báo cáo</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm">
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h2>Đơn hàng mới nhất</h2>
+        <div class="dashboard-grid">
+            <!-- Card: Thông tin đặt bàn -->
+            <div class="card card-booking-info">
+                <h3>Thông tin đặt bàn hôm nay</h3>
+                <p><strong>Bàn số:</strong> 10</p>
+                <p><strong>Giờ đến:</strong> 08:00</p>
+                <p><strong>Số khách:</strong> 5</p>
+            </div>
+
+            <!-- Card: Hình ảnh món ăn -->
+            <div class="card card-food-image">
+                <img src="https://images.unsplash.com/photo-1565299543923-37dd37887442?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=781&q=80" alt="Bít tết">
+            </div>
+
+            <!-- Card: Chi tiết đơn hàng -->
+            <div class="card card-order-details">
+                <h3>Chi tiết đơn hàng</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Số lượng</th>
+                            <th>Món ăn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2</td>
+                            <td>Bít tết</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Salad rau trộn</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Khoai tây chiên</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Nước suối</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="card-actions">
+                    <div class="left-actions">
+                        <button class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button class="icon-btn"><i class="fa-solid fa-plus"></i></button>
+                        <button class="icon-btn btn-danger"><i class="fa-solid fa-minus"></i></button>
+                    </div>
+                    <div class="right-actions">
+                        <button class="icon-btn"><i class="fa-regular fa-circle"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: Thông tin khách hàng -->
+            <div class="card card-customer-info">
+                <h3>Thông tin khách hàng</h3>
+                <p><strong>Tên:</strong> Nguyễn Văn An</p>
+                <p><strong>Số điện thoại:</strong> 0987654321</p>
+                <p><strong>Ghi chú:</strong> Sinh nhật</p>
+                <div class="card-actions">
+                    <button class="icon-btn btn-info"><i class="fa-solid fa-info"></i></button>
+                    <button class="icon-btn btn-edit"><i class="fa-solid fa-pen"></i></button>
+                    <button class="icon-btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
