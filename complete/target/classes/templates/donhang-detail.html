@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chi tiết đơn hàng</title>
+</head>
+<body>
+<h1>Chi tiết đơn hàng</h1>
+
+<p>ID: <span th:text="${donHang.id}"></span></p>
+<p>Món: <span th:text="${donHang.item}"></span></p>
+<p>Giá: <span th:text="${donHang.price}"></span></p>
+
+<h2>Cập nhật</h2>
+<form th:action="@{/donhang/{id}(id=${donHang.id})}" method="post">
+    <label>Món:</label>
+    <input type="text" name="item" th:value="${donHang.item}" required>
+    <label>Giá:</label>
+    <input type="number" step="0.01" name="price" th:value="${donHang.price}" required>
+    <button type="submit">Cập nhật</button>
+</form>
+
+<a href="/donhang">Quay lại danh sách</a>
+</body>
+</html>

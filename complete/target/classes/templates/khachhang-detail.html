@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chi tiết khách hàng</title>
+</head>
+<body>
+<h1>Chi tiết khách hàng</h1>
+
+<p>ID: <span th:text="${khachHang.id}"></span></p>
+<p>Tên: <span th:text="${khachHang.name}"></span></p>
+<p>Email: <span th:text="${khachHang.email}"></span></p>
+
+<h2>Cập nhật</h2>
+<form th:action="@{/khachhang/{id}(id=${khachHang.id})}" method="post">
+    <label>Tên:</label>
+    <input type="text" name="name" th:value="${khachHang.name}" required>
+    <label>Email:</label>
+    <input type="email" name="email" th:value="${khachHang.email}" required>
+    <button type="submit">Cập nhật</button>
+</form>
+
+<a href="/khachhang">Quay lại danh sách</a>
+</body>
+</html>

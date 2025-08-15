@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh sách khách hàng</title>
+</head>
+<body>
+<h1>Danh sách khách hàng</h1>
+
+<form action="/khachhang" method="post">
+    <label>Tên:</label>
+    <input type="text" name="name" required>
+    <label>Email:</label>
+    <input type="email" name="email" required>
+    <button type="submit">Thêm</button>
+</form>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Email</th>
+        <th>Hành động</th>
+    </tr>
+    <tr th:each="kh : ${khachHangs}">
+        <td th:text="${kh.id}"></td>
+        <td th:text="${kh.name}"></td>
+        <td th:text="${kh.email}"></td>
+        <td>
+            <a th:href="@{/khachhang/{id}(id=${kh.id})}">Xem</a>
+            <form th:action="@{/khachhang/{id}(id=${kh.id})}" method="post" style="display:inline">
+                <input type="hidden" name="_method" value="delete"/>
+                <button type="submit">Xóa</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<a href="/">Về trang chủ</a>
+</body>
+</html>

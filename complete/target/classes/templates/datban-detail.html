@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chi tiết bàn đặt</title>
+</head>
+<body>
+<h1>Chi tiết bàn đặt</h1>
+
+<p>ID: <span th:text="${datBan.id}"></span></p>
+<p>Số bàn: <span th:text="${datBan.tableNumber}"></span></p>
+<p>Thời gian: <span th:text="${datBan.reservationTime}"></span></p>
+
+<h2>Cập nhật</h2>
+<form th:action="@{/datban/{id}(id=${datBan.id})}" method="post">
+    <label>Số bàn:</label>
+    <input type="number" name="tableNumber" th:value="${datBan.tableNumber}" required>
+    <label>Thời gian:</label>
+    <input type="datetime-local" name="reservationTime" required>
+    <button type="submit">Cập nhật</button>
+</form>
+
+<a href="/datban">Quay lại danh sách</a>
+</body>
+</html>
