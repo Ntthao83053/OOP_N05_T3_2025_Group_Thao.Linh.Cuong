@@ -1,0 +1,226 @@
+/* --- General & Reset --- */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap' );
+
+:root {
+    --primary-color: #4A7729; /* Green from the navbar */
+    --background-color: #F4F4F4;
+    --card-background: #FFFFFF;
+    --text-color: #333333;
+    --border-color: #E0E0E0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+/* --- Login Page --- */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background-color: var(--card-background);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    width: 100%;
+    max-width: 400px;
+    border-top: 1px solid var(--border-color);
+}
+
+.login-box h1 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3b5e21;
+}
+
+/* --- Main Dashboard Page --- */
+.main-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 20px 15px;
+    display: block;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.main-nav ul li a.active,
+.main-nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-bar input {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #FFF;
+    background-color: rgba(255, 255, 255, 0.9);
+    min-width: 250px;
+}
+
+.main-content {
+    padding: 30px 40px;
+}
+
+.main-content h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    gap: 20px;
+    grid-template-areas:
+        "booking-info food-image"
+        "order-details customer-info";
+}
+
+.card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+/* Card Specific Styles */
+.card-booking-info { grid-area: booking-info; }
+.card-booking-info p { margin-bottom: 10px; }
+
+.card-food-image { grid-area: food-image; padding: 0; overflow: hidden; }
+.card-food-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-order-details { grid-area: order-details; }
+.card-order-details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+.card-order-details th, .card-order-details td {
+    text-align: left;
+    padding: 10px 5px;
+    border-bottom: 1px solid var(--border-color);
+}
+.card-order-details th { font-weight: 500; color: #666; }
+.card-order-details tr:last-child td { border-bottom: none; }
+
+.card-customer-info { grid-area: customer-info; }
+.card-customer-info p { margin-bottom: 10px; }
+
+.card-actions {
+    margin-top: auto; /* Pushes actions to the bottom */
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-actions, .right-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+.icon-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.icon-btn.btn-danger { background-color: #FBE9E7; color: #D32F2F; border-color: #FFCCBC; }
+.icon-btn.btn-danger:hover { background-color: #FFCCBC; }
+
+.icon-btn.btn-info { background-color: #E3F2FD; color: #1976D2; border-color: #BBDEFB; }
+.icon-btn.btn-info:hover { background-color: #BBDEFB; }
+
+.icon-btn.btn-edit { background-color: #E8F5E9; color: #388E3C; border-color: #C8E6C9; }
+.icon-btn.btn-edit:hover { background-color: #C8E6C9; }
